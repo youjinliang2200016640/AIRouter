@@ -1,0 +1,26 @@
+# AI Router — Example Configuration
+# ==================================
+# Copy this file to config.yaml and adjust values as needed.
+# All options can be overridden via command-line flags.
+
+# --- Server listen settings ---
+server:
+  listen_host: "0.0.0.0"   # Bind address (0.0.0.0 = all interfaces)
+  listen_port: 8080         # Listening port
+
+# --- Backend target pool ---
+# Requests are distributed across these targets in round-robin order.
+# Each target requires a host and port.
+targets:
+  - host: "localhost"
+    port: 9001
+  - host: "localhost"
+    port: 9002
+
+# --- Request/response storage ---
+# When enabled, each request/response pair is saved as a JSON file
+# in the specified directory.  JSON bodies are automatically pretty-printed.
+storage:
+  enabled: false            # Set to true to enable storage
+  path: "./storage"         # Directory for JSON output
+  max_count: 1000           # Stop storing after this many pairs
